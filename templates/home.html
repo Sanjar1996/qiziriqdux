@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-cntent-center align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        {% for carusel_model in carusel_models %}
+        <!-- Slide {{ carusel_model.pk }} -->
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">{{ carusel_model.title }}</h2>
+                <p class="animate__animated animate__fadeInUp">{{ carusel_model.summary }}</p>
+                <!-- {#          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>#} -->
+            </div>
+        </div>
+        {% endfor %}
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+        </a>
+
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+
+    <section class="service-details">
+        <div class="container">
+            <div class="row">
+                <div class="section-title">
+                    <h2>So'ngi yangiliklar</h2>
+                </div>
+                {% for data in page_obj %}
+                <div class="col-md-4 d-flex align-items-stretch" data-aos="fade-up">
+                    <div class="card">
+                        <div class="card-img">
+                            {% if data.image %}
+                            <img src="{{ data.image.url }}" alt="...">
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'detail' data.pk %}">{{ data.title }}</a></h5>
+                            <p> Vaqt | {{ data.date }} </p>
+                            <p class="card-text">{{ data.summary }}<a href="{% url 'detail' data.pk %}">...</a></p>
+                            <div class="read-more"><a href="{% url 'detail' pk=data.id %}"><i
+                                    class="bi bi-arrow-right"></i> Batafsil</a></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% comment %} Paginatiom started {% endcomment %}
+                <div class="pagination">
+         <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; oldingi</a>
+                <a href="?page={{ page_obj.previous_page_number }}"></a>
+            {% endif %}
+
+            <span class="current">
+                saxifa {{ page_obj.number }} dan {{ page_obj.paginator.num_pages }}.
+            </span>
+              {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">keyingi</a>
+                  <a href="?page={{ page_obj.paginator.num_pages }}"> &raquo;</a>
+              {% endif %}
+          </span>
+                </div>
+                {% comment %} End Pagination {% endcomment %}
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======= Why Us Section ======= -->
+    <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+        <div class="container">
+            <div class="row">
+                {% for data in mainsite_models %}
+                <div class="col-lg-6">
+                    {% if data.image %}
+                    <div class="col-lg-8 video-box">
+                        <img src="{{ data.image.url }}" class="img-fluid " alt="" style="height: 500px;">
+                        <a href="{{ data.youtube_silka }}" class="venobox play-btn mb-4" data-vbtype="video"
+                           data-autoplay="true"></a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-lg-4 d-flex flex-column justify-content-center p-5">
+
+                    <div class="icon-box">
+                        {#
+                        <div class="icon"><i class="{{ data.icon }}"></i></div>
+                        #}
+                        <h4 class="title"><a href="{{ data.youtube_silka }}">{{ data.title }}</a></h4>
+                        <p class="description">{{ data.body|safe }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Features Section ======= -->
+    <section class="features">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Biz haqimizda</h2>
+                <p>Ishtixon davlat o'rmon xo'jaligining tashkil etilishi haqida.</p>
+            </div>
+
+            {% for future in future_model %}
+            <div class="row" data-aos="fade-up">
+                <div class="col-md-5">
+                    {% if future.image %}
+                    <img src="{{ future.image.url }}" class="img-fluid" alt="{{ future.title }}">
+                    {% endif %}
+                </div>
+                <div class="col-md-7 pt-4">
+                    <h3>{{ future.title|safe }}</h3>
+                    <p class="fst-italic">
+                        {{ future.descriptions|safe }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        </div>
+    </section><!-- End Features Section -->
+
+</main><!-- End #main -->
+{% endblock content %}

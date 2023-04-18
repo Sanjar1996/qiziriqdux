@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <ol>
+                    <li><a href="{% url 'pages:home' %}">Asosiy</a></li>
+                    <li>Elektron ma'lumotlar bazasi</li>
+                </ol>
+                <h2>Elektron ma'lumotlar bazasi</h2>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+
+                <div class="row">
+{#                    <center><h3>Byudjet toʼgʼrisidagi qonunchilik hujjatlariga muvofiq ochiq maʼlumotlar</h3></center>#}
+                    {% for data in elektront %}
+                        <div class="col-lg-3 col-md-6 {% if fotloop.first %}mt-4 mt-md-0{% endif %}">
+                            <div class="box">
+                                <h3>{{ data.type }}</h3>
+{#                                <h4><span> Hisobot</span></h4>#}
+                                <div class="btn-wrap">
+                                    <a href="{% url 'pages:elektron' data.pk %}" class="btn-buy">Ko'rish</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </section><!-- End Pricing Section -->
+    </main><!-- End #main -->
+{% endblock content %}

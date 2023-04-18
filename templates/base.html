@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+{% load active_link_tags %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    {% comment %} <img src="{% static '/img/logo2.png' %}" alt="logo"> {% endcomment %}
+    <title>Qiziriq davlat o'rmon xo'jaligi</title>
+    <meta content="" name="description">
+    <meta content="Qiziriq, Qiziriq, Qiziriq davlat o'rmon xo'jaligi" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{% static '/img/icon.png' %}" rel="icon">
+    <link href="{% static '/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static '/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static '/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static '/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static '/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static '/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static '/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <div class="logo">
+            <h1 class="text-light"><a href="{% url 'home' %}"><span>Qiziriq<br>davlat o'rmon xo'jaligi</span></a>
+            </h1>
+        </div>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a href="{% url 'home' %}" {% if forloop.first %} class={% active_link 'home' %} {% endif %}>Bosh
+                    sahifa</a></li>
+                <li><a href="{% url 'about' %}" class={% active_link 'about' %}>Biz haqimizda</a></li>
+                <li><a href="{% url 'news' %}" class={% active_link 'news' %}>Yangiliklar</a></li>
+                <li><a href="{% url 'prcie' %}" class={% active_link 'prcie' %}>Ochiq ma'lumotlar portali</a></li>
+                <li><a href="{% url 'hodim' %}" class={% active_link 'hodim' %}>Xodimlar</a></li>
+                <ul>
+        </nav><!-- .navbar -->
+    </div>
+</header><!-- End Header -->
+{% block content %}
+
+{% endblock content %}
+<!-- ======= Footer ======= -->
+<footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+    <div class="footer-newsletter">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Sahifalar</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Bosh sahifa</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'about' %}">Biz haqimizda</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'news' %}">Yangiliklar</a></li>
+                            <li><i class='bx bx-chevron-right'></i><a href="{% url 'prcie' %}" class={% active_link 'prcie' %}>Ochiq ma'lumotlar
+                                portali</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'hodim' %}">Xodimlar</a></li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Foydali</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="https://urmon.uz/uz/asosiy/">O'rmon
+                                xo'jaligi davlat qo'mitasining asosiy veb sayti </a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="https://ijara-urmon.uz/">O'rmon fondi
+                                yerlarini auktsion orqali ijagara berish portali</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="https://ruxsatnoma-urmon.uz/">O'rmon
+                                xo'jaligi davlat qo'mitasiga qarashli ruxsatnoma olish portali</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="https://lex.uz/">Qonunchilik ma'lumotlari
+                                milliy bazasi</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Bizning manzilimiz</h4>
+                        <p>
+                            Samarqand viloyati<br>
+                            Qiziriq tumani<br>
+                            Fayzobod QFY <br>
+                            Ko'tarma maxallasi <br><br>
+                            <strong>Telefon raqam:</strong> +998 97 561 74 72<br>
+                            +998 93 717 09 90<br>
+                            <strong>Email:</strong> qiziriq@urmon.uz<br>
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>Qo'mita haqida</h3>
+                        <p >O'rmon xo'jaligi O'zbekiston Respublikasi Adliya vazirligi huzuridagi Davlat xizmatlari agetligi
+                            Samarqand viloyati boshqarmasi Qiziriq tuman Davlat xizmatlari markazida 2021 yilning 29 iyul kunida ro'yxatga olingan.  </p>
+                        <div class="social-links mt-3">
+                            <a href="https://qiziriq@urmon.uz/" class="email"><i class="bi bi-envelope"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; "O'rmontexnoservis" DUK, Texnik qo'llab quvvatlash: +998 95 195 99 29.
+            </div>
+        </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static '/vendor/aos/aos.js' %}"></script>
+<script src="{% static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static '/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static '/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static '/vendor/purecounter/purecounter.js' %}"></script>
+<script src="{% static '/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static '/vendor/waypoints/noframework.waypoints.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static '/js/main.js' %}"></script>
+
+</body>
+
+</html>

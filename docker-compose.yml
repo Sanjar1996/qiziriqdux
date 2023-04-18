@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  qiziriqdb:
+    container_name: qiziriqdb
+    image: postgres
+    environment:
+      POSTGRES_DB: db_qiziriq
+      POSTGRES_USER: qiziriquser
+      POSTGRES_PASSWORD: qiziriqpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/dataqiziriq/
+    ports:
+      - "5432:5432"
+  qiziriqweb:
+    container_name: qiziriq
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - qiziriqdb
+    env_file:
+      - ./.env.dev
+
+volumes:
+  postgres_data:
